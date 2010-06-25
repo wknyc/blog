@@ -1,0 +1,52 @@
+<!--
+  copyright (c) 2009 Google inc.
+
+  You are free to copy and use this sample.
+  License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google Maps API Sample</title>
+    <!-- script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA5ZJIAS5YabNRFrpr6xYMXxRxmZCMWFkyicoq60mhbI2wDUvNbRTdulb2WcuItNPUcK3RJtuscYsoIQ"></script>
+    <script src="maptest.js"></script>
+    <script>
+    
+    	function start(){
+        	
+        	var mapObject = {};
+
+        	mapObject.address = "150 Varick St, New York, NY 10013, USA";
+			mapObject.caption = "150 Varick St<br/>New York, NY 10013";
+			mapObject.body = "This is our office! OMG!";
+			mapObject.lat = 40.726008;
+			mapObject.lon = -74.00532;
+
+			var mapObject2 = {};
+
+        	mapObject2.address = "100 Varick St, New York, NY 10013, USA";
+			mapObject2.caption = "150 Varick St<br/>New York, NY 10013";
+			mapObject2.body = "This is our office! WTF";
+			mapObject2.lat = 40.706008;
+			mapObject2.lon = -74.00532;
+			//console.log(mapObject);
+			
+    		initializeMap(mapObject, "map_canvas");
+
+    		initializeMap(mapObject2, "map_canvas_again");
+			
+    	}
+    
+    
+    
+    </script>
+  </head>
+  
+  <body onload="start()" onunload="GUnload()" style="font-family: Arial;border: 0 none;">
+    <div id="map_canvas" style="width: 425px; height: 355px"></div>
+    <div id="map_canvas_again" style="width: 425px; height: 355px"></div>
+  </body>
+</html>
