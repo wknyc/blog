@@ -22,7 +22,7 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 	
 	jQuery(document).ready(function(){
 		windowResize();
-		setupMaps("<?php echo $themedir; ?>");
+		if(mapObjects.length > 0) setupMaps("<?php echo $themedir; ?>");
 	});
 
 	var h;
@@ -34,6 +34,20 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 		
 </script>
 
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({appId: '130800890284028', status: true, cookie: true, xfbml: true});
+      };
+      (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol +
+          '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    </script>
 
 </body>
 </html>

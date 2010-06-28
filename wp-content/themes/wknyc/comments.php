@@ -18,18 +18,13 @@
 <!-- You can start editing here. -->
 
 <?php if ( have_comments() ) : ?>
-	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
-
-	<div class="navigation">
-		<div class="alignleft"><?php previous_comments_link() ?></div>
-		<div class="alignright"><?php next_comments_link() ?></div>
-	</div>
+	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?></h3>
 
 	<ol class="commentlist">
 	<?php wp_list_comments(); ?>
 	</ol>
-
-	<div class="navigation">
+	
+	<div class="navigation-comments">
 		<div class="alignleft"><?php previous_comments_link() ?></div>
 		<div class="alignright"><?php next_comments_link() ?></div>
 	</div>

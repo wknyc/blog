@@ -17,42 +17,33 @@
 					<?php 
 						$mapData = get_post_meta(get_the_ID(), "_mapp_pois", true);
 						if($mapData){
-							//draw map!
-							
 							$corrected_address = $mapData[0]["corrected_address"];
 							$caption = $mapData[0]["caption"];
 							$body = $mapData[0]["body"];
 							$lat = $mapData[0]["lat"];
 							$lon = $mapData[0]["lng"];
-							
 					?>
-							<div class='mapDivContainer'><div class='mapDiv' id='map-<?php the_ID(); ?>'></div></div>
-							<script type="text/javascript">
-								var mapObject = {};
-									mapObject.address = "<?php echo $corrected_address; ?>";
-									mapObject.caption = "<?php echo $caption; ?>";
-									mapObject.body = "<?php echo $body; ?>";
-									mapObject.lat = <?php echo $lat; ?>;
-									mapObject.lon = <?php echo $lon; ?>;
-									mapObject.divID = "map-"+<?php the_ID(); ?>;
-									//console.log(mapObject);
-								
-								mapObjects.push(mapObject);
-							</script>
+						<div class='mapDivContainer'><div class='mapDiv' id='map-<?php the_ID(); ?>'></div></div>
+						<script type="text/javascript">
+							var mapObject = {};
+								mapObject.address = "<?php echo $corrected_address; ?>";
+								mapObject.caption = "<?php echo $caption; ?>";
+								mapObject.body = "<?php echo $body; ?>";
+								mapObject.lat = <?php echo $lat; ?>;
+								mapObject.lon = <?php echo $lon; ?>;
+								mapObject.divID = "map-"+<?php the_ID(); ?>;
+							mapObjects.push(mapObject);
+						</script>
 					
 					<?php
 						}
 					 ?> 
-				<br>
-				<br>
-				<br>
 						
 				</div>
 				<div class="postmetadata">
-					<?php edit_post_link('Edit', '', '<br />'); ?>
-					<?php comments_popup_link('Comment;', 'View Comments', 'View Comments'); ?><br />
-					Share / Save
-					
+					<div class="post_side_link"><?php comments_popup_link('Leave a Comment', 'View Comments', 'View Comments'); ?></div>
+					<div class="post_side_link"><fb:like href="<?php echo rawurlencode(get_permalink($post->ID)); ?>" layout="button_count" width="100"></fb:like></div>
+					<div class="post_side_link"><?php edit_post_link('+ Edit Post', '', '<br />'); ?></div>
 				</div>
 				<br clear='all' />
 			</div>
@@ -60,7 +51,7 @@
 		<?php endwhile; ?>
 
 		<div class="navigation">
-			<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
+			<div class="alignleft"><?php next_posts_link('&laquo; Older Posts') ?></div>
 			<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
 		</div>
 
@@ -68,9 +59,9 @@
 
 		<h2 class="center">Not Found</h2>
 		<p class="center">Sorry, but you are looking for something that isn't here.</p>
-		<?php include (TEMPLATEPATH . "/searchform.php"); ?>
 
 	<?php endif; ?>
+		<br clear='all'>
 	</div>
 
 <?php get_footer(); ?>

@@ -4,44 +4,50 @@
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<!-- div class="navigation">
-			<div class="alignleft"><?php /*previous_post_link('&laquo; %link')*/ ?></div>
-			<div class="alignright"><?php /*next_post_link('%link &raquo;')*/ ?></div>
-		</div -->
-
-		<div class="post" id="post-<?php the_ID(); ?>">
-			<h2><?php the_title(); ?></h2>
-			<div id='posttime'><?php the_time('l, F jS, Y') ?></div>
-			<?php 
-				// Signup Form
-				$categoryArray = get_the_category();
-				$themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/moontemplate/";
-				if($categoryArray[0]->cat_name == "Talks"){
-					echo "<div id='class_signup'><span id='signup_form'>enter your email here <input></input></span> <a href=''>Sign me up!</a></div>";
-					echo "<script type='text/javascript' src='" . $themedir . "js/jquery.js'></script>";
-					echo "<script type='text/javascript' src='" . $themedir . "js/signupform.js'></script>";
-				}
-				
-			?>
-			
+		<div class="post singlepost" id="post-<?php the_ID(); ?>">
+			<small>&nbsp;// posted by <?php the_author() ?></small>
+			<div id="post_date"><?php echo get_the_date("m.d.y"); ?></div><div id="post_hdr_bar"></div> 
+			<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 			
 			<div class="entry">
-				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
-				<?php 
-				if($categoryArray[0]->cat_name == "Projects"){
-					echo "<strong>Ingredients</strong>";
-					include("components/tech_icons.php");
-				}
-				?>
-				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
-				<?php the_tags( '<p>Tags: ', ', ', '</p>'); ?>
-				
-				
-			</div>
+					<?php the_content('Read the rest of this entry &raquo;'); ?>
+					
+					<?php 
+						$mapData = get_post_meta(get_the_ID(), "_mapp_pois", true);
+						if($mapData){
+							$corrected_address = $mapData[0]["corrected_address"];
+							$caption = $mapData[0]["caption"];
+							$body = $mapData[0]["body"];
+							$lat = $mapData[0]["lat"];
+							$lon = $mapData[0]["lng"];
+					?>
+						<div class='mapDivContainer'><div class='mapDiv' id='map-<?php the_ID(); ?>'></div></div>
+						<script type="text/javascript">
+							var mapObject = {};
+								mapObject.address = "<?php echo $corrected_address; ?>";
+								mapObject.caption = "<?php echo $caption; ?>";
+								mapObject.body = "<?php echo $body; ?>";
+								mapObject.lat = <?php echo $lat; ?>;
+								mapObject.lon = <?php echo $lon; ?>;
+								mapObject.divID = "map-"+<?php the_ID(); ?>;
+							mapObjects.push(mapObject);
+						</script>
+					
+					<?php
+						}
+					 ?> 
+						
+				</div>
+				<div class="postmetadata">
+					<div class="post_side_link"><?php comments_popup_link('Leave a Comment', 'View Comments', 'View Comments'); ?></div>
+					<div class="post_side_link"><fb:like href="<?php echo rawurlencode(get_permalink($post->ID)); ?>" layout="button_count" width="100"></fb:like></div>
+					<div class="post_side_link"><?php edit_post_link('+ Edit Post', '', '<br />'); ?></div>
+				</div>
+			<br clear='all' />
 		</div>
 
 	<?php comments_template(); ?>
-	<div id='postfooter'>&laquo; Back to <?php the_category(', ') ?></div>
+	<div id='postfooter'><a href="<?php echo get_option('home'); ?>">&laquo; Back Home</a></div>
 	<?php endwhile; else: ?>
 
 		<p>Sorry, no posts matched your criteria.</p>
@@ -50,6 +56,5 @@
 
 	</div>
 	
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

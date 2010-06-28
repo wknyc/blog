@@ -1,9 +1,18 @@
 var themeDir;
 
+var allowedBounds;
+var AmaxX;
+var AmaxY;
+var AminX;
+var AminY;
+
 function setupMaps(_themedir){
 	//console.log(_themedir);
 	
 	themeDir = _themedir;
+	
+	initBounds();
+	
 	for(var i=0; i<mapObjects.length; i++){
 		//console.log(jQuery(mapObjects[i].divID));
 		initializeMap(mapObjects[i]);
@@ -14,12 +23,25 @@ function setupMaps(_themedir){
 	$(".mapDiv").find("img").each(function(){
 		img = $(this);
 		if(img.height() == 256 && img.width() == 256){
-			img.css("opacity","0");
+			//img.css("opacity","0");
 		}
 	});
 	
 }
 
+function initBounds(){
+	
+	allowedBounds = new GLatLngBounds(
+			new GLatLng(40.71616774648679,-73.98880004882812),
+			new GLatLng(40.746346606483826,-73.96202087402344)
+	);
+
+	AmaxX = allowedBounds.getNorthEast().lng();
+	AmaxY = allowedBounds.getNorthEast().lat();
+	AminX = allowedBounds.getSouthWest().lng();
+	AminY = allowedBounds.getSouthWest().lat();	
+	
+}
 
 function initializeMap(_mapDataObject) {
 	
@@ -68,16 +90,7 @@ function setData(_map, _mapDataObject){
 
 	
 }
-var allowedBounds = new GLatLngBounds(
-		new GLatLng(40.71616774648679,-73.98880004882812),
-		new GLatLng(40.746346606483826,-73.96202087402344)
-);
-// It's not OK, so find the nearest allowed point and move there
 
-var AmaxX = allowedBounds.getNorthEast().lng();
-var AmaxY = allowedBounds.getNorthEast().lat();
-var AminX = allowedBounds.getSouthWest().lng();
-var AminY = allowedBounds.getSouthWest().lat();
 
 function checkBounds(_map) {
 	// If the map position is out of range, move it back
