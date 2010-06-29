@@ -3,8 +3,8 @@
 <div id="footer">
 
 	<div id='footer_inner'>
-		<div class='footer_link'>LINKS</div>
-		<div class='footer_link'>MAP</div>
+		<!-- <div class='footer_link'>LINKS</div>
+		<div class='footer_link'>MAP</div> -->
 		<div class='footer_link'>SEARCH <?php include (TEMPLATEPATH . '/searchform.php'); ?></div>
 		<br clear="all" />
 	</div>

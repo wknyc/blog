@@ -1,10 +1,15 @@
 var themeDir;
 
-var allowedBounds;
+var allowedBounds13;
+var allowedBounds12;
 var AmaxX;
 var AmaxY;
 var AminX;
 var AminY;
+var BmaxX;
+var BmaxY;
+var BminX;
+var BminY;
 
 function setupMaps(_themedir){
 	//console.log(_themedir);
@@ -30,18 +35,28 @@ function setupMaps(_themedir){
 }
 
 function initBounds(){
+//	
+//	allowedBounds13 = new GLatLngBounds(
+//			new GLatLng(40.59322988304919, -74.00836944580078),//((), (40.61616768039879, -73.97232055664062))
+//			new GLatLng(40.86030420568381, -73.86022567749023)
+//	);
+//	AmaxX = allowedBounds13.getNorthEast().lng();
+//	AmaxY = allowedBounds13.getNorthEast().lat();
+//	AminX = allowedBounds13.getSouthWest().lng();
+//	AminY = allowedBounds13.getSouthWest().lat();	
+//	
 	
-	allowedBounds = new GLatLngBounds(
-//			new GLatLng(40.71616774648679,-73.98880004882812),
-//			new GLatLng(40.746346606483826,-73.96202087402344)
-			new GLatLng(40.59322988304919, -74.00836944580078),//((), (40.61616768039879, -73.97232055664062))
-			new GLatLng(40.86030420568381, -73.86022567749023)
+	
+	allowedBounds12 = new GLatLngBounds(
+			//new GLatLng(40.59322988304919, -74.00836944580078),//(40.61603737424185, -73.97232055664062)
+			//new GLatLng(40.86030420568381, -73.86022567749023)//(40.83745041598947, -73.89610290527344)
+			new GLatLng(40.61603737424185, -73.97232055664062),
+			new GLatLng(40.83745041598947, -73.89610290527344)
 	);
-
-	AmaxX = allowedBounds.getNorthEast().lng();
-	AmaxY = allowedBounds.getNorthEast().lat();
-	AminX = allowedBounds.getSouthWest().lng();
-	AminY = allowedBounds.getSouthWest().lat();	
+	AmaxX = allowedBounds12.getNorthEast().lng();
+	AmaxY = allowedBounds12.getNorthEast().lat();
+	AminX = allowedBounds12.getSouthWest().lng();
+	AminY = allowedBounds12.getSouthWest().lat();	
 	
 }
 
@@ -56,14 +71,15 @@ function initializeMap(_mapDataObject) {
 		var mt = map.getMapTypes();
 		// Overwrite the getMinimumResolution() and getMaximumResolution() methods
 		for (var i=0; i<mt.length; i++) {
-			mt[i].getMinimumResolution = function() { return 13; };
-			mt[i].getMaximumResolution = function() { return 13; };
+			mt[i].getMinimumResolution = function() { return 12; };
+			mt[i].getMaximumResolution = function() { return 12; };
 		}
 		
 		// Add a move listener to restrict the bounds range
 		GEvent.addListener(map, "move", function() {
-			//console.log(map.getCenter());
+			//console.log(map.getZoom());
 			checkBounds(map);
+			//checkBounds(map, map.getZoom());
 		});
 		
 	    // ground overlay
@@ -82,13 +98,13 @@ function initializeMap(_mapDataObject) {
 }
 
 function setData(_map, _mapDataObject){
-	_map.setCenter(new GLatLng(_mapDataObject.lat,_mapDataObject.lon), 13);
+	_map.setCenter(new GLatLng(_mapDataObject.lat,_mapDataObject.lon), 12);
 	
     // Create our "tiny" marker icon
     var customIcon = new GIcon(G_DEFAULT_ICON);
     	customIcon.image = themeDir + "images/pin1.png";
     	customIcon.iconSize = new GSize(62, 54);
-    	customIcon.iconAnchor = new GPoint(17, 39);
+    	customIcon.iconAnchor = new GPoint(10, 58);
     	customIcon.infoWindowAnchor = new GPoint(17, 39);
     	customIcon.imageMap = [0,0, 60,0, 60,54, 0,54];
     	
@@ -102,7 +118,7 @@ function setData(_map, _mapDataObject){
 	var customIconWK = new GIcon(G_DEFAULT_ICON);
 	customIconWK.image = themeDir + "images/pin2.png";
 	customIconWK.iconSize = new GSize(88, 59);
-	customIconWK.iconAnchor = new GPoint(44, 55);
+	customIconWK.iconAnchor = new GPoint(32, 55);
 	customIconWK.infoWindowAnchor = new GPoint(44, 55);
 	customIconWK.imageMap = [0,0, 75,0, 75,59, 0,59];
 	
@@ -127,11 +143,9 @@ function setData(_map, _mapDataObject){
 
 
 function checkBounds(_map) {
-	// If the map position is out of range, move it back
-	// Perform the check and return if OK
-	if (allowedBounds.contains(_map.getCenter())) {
-		return;
-	}
+
+	if (allowedBounds12.contains(_map.getCenter())) return;
+	
 	var C = _map.getCenter();
 	var X = C.lng();
 	var Y = C.lat();
@@ -142,4 +156,6 @@ function checkBounds(_map) {
 	if (Y > AmaxY) { Y = AmaxY; }
 	// alert ("Restricting "+Y+" "+X);
 	_map.setCenter(new GLatLng(Y, X));
+		
+
 }
