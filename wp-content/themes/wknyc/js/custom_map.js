@@ -32,8 +32,10 @@ function setupMaps(_themedir){
 function initBounds(){
 	
 	allowedBounds = new GLatLngBounds(
-			new GLatLng(40.71616774648679,-73.98880004882812),
-			new GLatLng(40.746346606483826,-73.96202087402344)
+//			new GLatLng(40.71616774648679,-73.98880004882812),
+//			new GLatLng(40.746346606483826,-73.96202087402344)
+			new GLatLng(40.59322988304919, -74.00836944580078),//((), (40.61616768039879, -73.97232055664062))
+			new GLatLng(40.86030420568381, -73.86022567749023)
 	);
 
 	AmaxX = allowedBounds.getNorthEast().lng();
@@ -55,7 +57,7 @@ function initializeMap(_mapDataObject) {
 		// Overwrite the getMinimumResolution() and getMaximumResolution() methods
 		for (var i=0; i<mt.length; i++) {
 			mt[i].getMinimumResolution = function() { return 13; };
-			mt[i].getMaximumResolution = function() { return 14; };
+			mt[i].getMaximumResolution = function() { return 13; };
 		}
 		
 		// Add a move listener to restrict the bounds range
@@ -66,13 +68,15 @@ function initializeMap(_mapDataObject) {
 		
 	    // ground overlay
 		var overlay_boundaries = new GLatLngBounds(
-										new GLatLng(40.693099,-74.025192),
-										new GLatLng(40.769457,-73.925629)
+										new GLatLng(40.569845,-74.045448),
+										new GLatLng(40.883722,-73.823404)
 									);
+		//console.log("new");
 		//var overlay_boundaries = new GLatLngBounds(new GLatLng(), new GLatLng());
-		var drawnMap = new GGroundOverlay(themeDir + "images/maptest.jpg", overlay_boundaries);
-		map.addControl(new GSmallZoomControl3D());
+		var drawnMap = new GGroundOverlay(themeDir + "images/map_sized.jpg", overlay_boundaries);
+		//map.addControl(new GSmallZoomControl3D());
 		map.addOverlay(drawnMap);
+		
 	}
     
 }

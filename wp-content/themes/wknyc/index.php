@@ -42,7 +42,11 @@
 				</div>
 				<div class="postmetadata">
 					<div class="post_side_link"><?php comments_popup_link('Leave a Comment', 'View Comments', 'View Comments'); ?></div>
-					<div class="post_side_link"><fb:like href="<?php echo rawurlencode(get_permalink($post->ID)); ?>" layout="button_count" width="100"></fb:like></div>
+					<div class="post_side_link">
+						<div class='shareLink'><fb:share-button class="url" href="<?php echo get_permalink($post->ID); ?>" type="box_count"></fb:share-button></div>
+						<div class='shareLink'><?php echo tweetmeme(); ?></div>
+					</div>
+					<br clear='all' />
 					<div class="post_side_link"><?php edit_post_link('+ Edit Post', '', '<br />'); ?></div>
 				</div>
 				<br clear='all' />

@@ -11,6 +11,9 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
+
+
+
 <title><?php bloginfo('name'); ?> <?php if ( is_single() ) { ?> &raquo; Blog Archive <?php } ?> <?php wp_title(); ?></title>
 
 <!-- link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" /-->
@@ -18,7 +21,7 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 <link rel="stylesheet" href="<?php echo($themedir . "style.css"); ?>" type="text/css" media="screen" />
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<script type="text/javascript"> var mapObjects = []; </script>
+<script type="text/javascript"> var mapObjects = [];</script>
 <style type="text/css" media="screen">
 	body{ background-image:url(<?php echo($themedir . "/images/blogpattern.gif"); ?>); }
 </style>

@@ -170,14 +170,18 @@ width:172px;
 	padding:8px;
 	}	
 	
-.post_side_link a:hover{
-	color:#FFFFFF;
-	
-	}
-.post_side_link:hover{
-	background-color:#ff0000;
+
+.post_side_link:hover, .post_side_link:hover a{
 	color:#FFFFFF;
 	}	
+	
+.shareLink{
+
+float:left;
+height:62px;
+width:62px;
+	}
+	
 #posttime{
 	color:#888;
 	font-size:8pt;

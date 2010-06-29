@@ -22,9 +22,13 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 	
 	jQuery(document).ready(function(){
 		windowResize();
-		if(mapObjects.length > 0) setupMaps("<?php echo $themedir; ?>");
-	});
 
+		//setup maps
+		if(mapObjects.length > 0) setupMaps("<?php echo $themedir; ?>");
+
+	});
+	
+	//window resizing
 	var h;
 	function windowResize(){
 		h = jQuery(window).height() - 25;
