@@ -84,12 +84,42 @@ function initializeMap(_mapDataObject) {
 function setData(_map, _mapDataObject){
 	_map.setCenter(new GLatLng(_mapDataObject.lat,_mapDataObject.lon), 13);
 	
+    // Create our "tiny" marker icon
+    var customIcon = new GIcon(G_DEFAULT_ICON);
+    	customIcon.image = themeDir + "images/pin1.png";
+    	customIcon.iconSize = new GSize(62, 54);
+    	customIcon.iconAnchor = new GPoint(17, 39);
+    	customIcon.infoWindowAnchor = new GPoint(17, 39);
+    	customIcon.imageMap = [0,0, 60,0, 60,54, 0,54];
+    	
+    // Set up our GMarkerOptions object
+    var markerOptions = { icon:customIcon };
 	var markerLatLong = new GLatLng(_mapDataObject.lat,_mapDataObject.lon);
-	var marker = new GMarker(markerLatLong);
+	var marker = new GMarker(markerLatLong, markerOptions);
 	_map.addOverlay(marker);
+	
+	// Create our "tiny" marker icon
+	var customIconWK = new GIcon(G_DEFAULT_ICON);
+	customIconWK.image = themeDir + "images/pin2.png";
+	customIconWK.iconSize = new GSize(88, 59);
+	customIconWK.iconAnchor = new GPoint(44, 55);
+	customIconWK.infoWindowAnchor = new GPoint(44, 55);
+	customIconWK.imageMap = [0,0, 75,0, 75,59, 0,59];
+	
+	// Set up our GMarkerOptions object
+	var markerOptionsWK = { icon:customIconWK };
+	var markerLatLongWK = new GLatLng(40.726004,-74.005478);
+	var markerWK = new GMarker(markerLatLongWK, markerOptionsWK);
+	
+	
+	_map.addOverlay(markerWK);
 	
 	GEvent.addListener(marker, "click", function() {
 	    marker.openInfoWindowHtml("<strong>" + _mapDataObject.body + "</strong><br />" + _mapDataObject.caption);
+	});
+	
+	GEvent.addListener(markerWK, "click", function() {
+		markerWK.openInfoWindowHtml("<strong>Our Office! Hi Everyone!</strong>");
 	});
 
 	
