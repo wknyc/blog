@@ -18,7 +18,7 @@ Author: Chris Richardson
 // Class mappress - plugin class
 // ----------------------------------------------------------------------------------
 class mappress {
-	var $plugin_name = "MapPress";                                // plugin display name
+	var $plugin_name = "WKNYC Map";                                // plugin display name
 
 	var $wordpress_tag = 'mappress-google-maps-for-wordpress';    // tag assigned by wordpress.org
 	var $prefix = 'mappress';                                     // plugin filenames
@@ -641,20 +641,22 @@ class mappress {
 				</div>
 
 				<div>
-					<p><b><?php _e('Add locations (keep it close to NYC)', $this->prefix) ?></b></p>
-					<?php _e('Street Address, city, state, country, or place', $this->prefix) ?><br />
+					<p><b><?php _e('Add ONE New York City location. You might want to <a href=\'http://maps.google.com\'>find the right address by searching google maps first</a>.', $this->prefix) ?></b></p>
+					<?php _e('Street Address, City, NY (you can edit the marker bubble\'s contents later)', $this->prefix) ?><br />
 					<input style="width:80%" type="text" name="mapp_input_address" id="mapp_input_address" value="<?php echo $poi['address'] ?>" />
 					<br />
-					<?php _e('Latitude/Longitude ', $this->prefix) ?><br />
-					<input type="text" name="mapp_input_lat" id="mapp_input_lat" value="<?php echo $poi['lat'] ?>" />
-					<input type="text" name="mapp_input_lng" id="mapp_input_lng" value="<?php echo $poi['lng'] ?>" />
+					<div class="charles_edit" style="display:none">
+						<?php _e('Latitude/Longitude ', $this->prefix) ?><br />
+						<input type="text" name="mapp_input_lat" id="mapp_input_lat" value="<?php echo $poi['lat'] ?>" />
+						<input type="text" name="mapp_input_lng" id="mapp_input_lng" value="<?php echo $poi['lng'] ?>" />
+						</div>
 					<p class="submit" style="padding: 0; float: none">
 						<input type="button" id="mapp_add_location" value="<?php _e('Add location', $this->prefix) ?>" />
 					</p>
 
 					<p id="mapp_message"></p>
 
-					<p><b><?php _e('Preview', $this->prefix) ?></b></p>
+					<b><?php _e('Preview', $this->prefix) ?></b><br />
 					<?php $checked = ($map_args['auto_center']) ? "checked='checked'" : ''; ?>
 					
 					<div class="charles_edit" style="display:none">

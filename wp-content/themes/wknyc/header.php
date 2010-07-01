@@ -3,15 +3,17 @@
 
 <?php 
 
-define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].'');
-define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].'');
+//define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].'');
+//define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].'');
+define('WP_HOME', 'http://blog.wknyc.com');
+define('WP_SITEURL', 'http://blog.wknyc.com');
 $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 ?>
 
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-
-<title><?php bloginfo('name'); ?> <?php if ( is_single() ) { ?> &raquo; Blog Archive <?php } ?> <?php wp_title(); ?></title>
+<title><?php bloginfo('name'); ?> <?php if ( is_single() ) { } ?> <?php wp_title(); ?></title>
+<meta name="description" content="The official blog of Wieden+Kennedy New York. Written by the good people of W+K NYC.">
 
 <!-- link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" /-->
 
@@ -22,6 +24,8 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 <style type="text/css" media="screen">
 	body{ background-image:url(<?php echo($themedir . "/images/blogpattern.gif"); ?>); }
 </style>
+
+
 
 <?php wp_head(); ?>
 
@@ -37,6 +41,8 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 
 
 <div id="header">
+
 	<!-- h1><a href="<?php /*echo get_option('home'); */?>/"><?php /*bloginfo('name');*/ ?></a></h1-->
-	<h1><a href="<?php echo get_option('home'); ?>/"><img id='headerimg' src="<?php echo($themedir . '/images/header.jpg''); ?>"/></a></h1>
+	<h1><a href="<?php echo get_option('home'); ?>/"><img id='headerimg' src="<?php echo $themedir . '/images/header.jpg'; ?>"/></a></h1>
+
 </div>

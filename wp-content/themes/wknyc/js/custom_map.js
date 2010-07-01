@@ -104,7 +104,7 @@ function setData(_map, _mapDataObject){
     var customIcon = new GIcon(G_DEFAULT_ICON);
     	customIcon.image = themeDir + "images/pin1.png";
     	customIcon.iconSize = new GSize(62, 54);
-    	customIcon.iconAnchor = new GPoint(10, 58);
+    	customIcon.iconAnchor = new GPoint(17, 40);
     	customIcon.infoWindowAnchor = new GPoint(17, 39);
     	customIcon.imageMap = [0,0, 60,0, 60,54, 0,54];
     	

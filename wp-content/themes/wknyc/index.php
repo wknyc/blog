@@ -7,7 +7,7 @@
 
 			<div class="post" id="post-<?php the_ID(); ?>">
 				<small>&nbsp;// posted by <?php the_author() ?></small>
-				<div id="post_date"><?php echo get_the_date("m.d.y"); ?></div><div id="post_hdr_bar"></div> 
+				<div class="post_date"><?php echo get_the_date("m.d.y"); ?></div><div class="post_hdr_bar"></div> 
 				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
 				<div class="entry">
@@ -44,7 +44,7 @@
 					<div class="post_side_link comments_link"><?php comments_popup_link('Leave a Comment', 'View Comments', 'View Comments'); ?></div>
 					<div class="post_side_link">Share</div>
 					<div class="post_side_link">
-						<div class='shareLink'><fb:share-button class="url" href="<?php echo get_permalink($post->ID); ?>" type="box_count"></fb:share-button></div>
+						<div class='shareLink'><a name="fb_share" type="box_count" share_url="<?php the_permalink() ?>"></a></div>
 						<div class='shareLink'><?php echo tweetmeme(); ?></div>
 					</div>
 					<br clear='all' />

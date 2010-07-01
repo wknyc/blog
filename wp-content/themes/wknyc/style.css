@@ -146,7 +146,7 @@ margin-bottom:20px;
 
 .entry{
 	width:525px;
-	font-family:Myriad Pro,Trebuchet MS,Helvetica,arial,sans-serif;
+	font-family:Helvetica,arial,sans-serif;
 	font-size:0.9em;
 	line-height:20px;
 	float:left;
@@ -192,12 +192,12 @@ height:62px;
 width:62px;
 	}
 	
-#posttime{
+.posttime{
 	color:#888;
 	font-size:8pt;
 }
 
-#post_date{
+.post_date{
 	background-color:#B5B5B5;
 	font-family:Helvetica,Arial,Verdana;
 	font-size:1.9em;
@@ -207,7 +207,7 @@ width:62px;
 	padding-top:4px;
 }
 
-#post_hdr_bar{
+.post_hdr_bar{
 	margin-top:1px;
 	border-top:solid 1px #333;
 	background-color:#000;
@@ -363,7 +363,7 @@ float:right;
 left:14px;
 padding:0 3px 0 0;
 position:relative;
-top:-4px;
+margin-top:-4px;
 	}
 
 #searchform input#s{
