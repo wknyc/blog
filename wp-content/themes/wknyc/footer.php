@@ -19,6 +19,7 @@ $themedir = "http://" . $_SERVER['HTTP_HOST'] . "/wp-content/themes/wknyc/";
 <script src="<?php echo $themedir . 'js/jquery.js'; ?>"></script>
 <script src="<?php echo $themedir . 'js/custom_map.js'; ?>"></script>
 
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 <script type='text/javascript'>
 	

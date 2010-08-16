@@ -161,7 +161,7 @@ background-color:#EDEDED;
 float:right;
 font-size:13px;
 font-weight:bold;
-height:130px;
+height:108px;
 margin-top:16px;
 
 width:172px;
@@ -174,10 +174,11 @@ border-bottom:solid 2px black;
 }
 
 .post_side_link{
+color:#FF0000;
+margin-bottom:6px;
+padding-bottom:4px;
 padding-left:9px;
 padding-top:4px;
-padding-bottom:4px;
-color:#FF0000;
 	}	
 	
 
@@ -189,6 +190,7 @@ color:#FF0000;
 
 float:left;
 height:62px;
+margin-right:5px;
 width:62px;
 	}
 	
