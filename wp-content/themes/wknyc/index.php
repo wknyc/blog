@@ -15,6 +15,7 @@
 					
 					
 					<?php 
+						
 						$mapData = get_post_meta(get_the_ID(), "_mapp_pois", true);
 						if($mapData){
 							$corrected_address = $mapData[0]["corrected_address"];
